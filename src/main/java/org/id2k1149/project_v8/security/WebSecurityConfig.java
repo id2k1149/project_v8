@@ -33,7 +33,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "index",
                 "/css/*",
                 "/js/*",
-                "/api/v1/users/*",
                 "/api/v*/registration/**")
                 .permitAll()
         .anyRequest()
