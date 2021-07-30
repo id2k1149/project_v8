@@ -69,19 +69,19 @@ public class UserService implements UserDetailsService {
                            String password,
                            Role role
                            ) {
-        User appUser = userRepository.findById(userId)
+        User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalStateException(
-                        "appUser with id " + userId + " does not exist"));
+                        "user with id " + userId + " does not exist"));
 
-        if (username != null && username.length() > 0 && !Objects.equals(appUser.getUsername(), username)) {
-            appUser.setUsername(username);
+        if (username != null && username.length() > 0 && !Objects.equals(user.getUsername(), username)) {
+            user.setUsername(username);
         }
 
-        if (password != null && password.length() > 0 && !Objects.equals(appUser.getPassword(), password)) {
-            appUser.setPassword(password);
+        if (password != null && password.length() > 0 && !Objects.equals(user.getPassword(), password)) {
+            user.setPassword(password);
         }
 
-        appUser.setRole(role);
+        user.setRole(role);
     }
 
     public void deleteUser(Integer userId) {
