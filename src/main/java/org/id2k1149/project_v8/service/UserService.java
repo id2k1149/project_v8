@@ -1,6 +1,5 @@
 package org.id2k1149.project_v8.service;
 
-import org.id2k1149.project_v8.models.Role;
 import org.id2k1149.project_v8.models.User;
 import org.id2k1149.project_v8.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +8,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.Objects;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -55,28 +50,28 @@ public class UserService implements UserDetailsService {
 ////        userRepository.save(appUser);
 ////    }
 //
-//    public String addNewUser(User user) {
-//        boolean userExists = userRepository
-//                .findUserByUserName(user.getUsername())
-//                .isPresent();
-//
-//        if (userExists) {
-//            throw new IllegalStateException("this username is already used");
-//        }
-//
-//        String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
-//        user.setPassword(encodedPassword);
-//
-//        userRepository.save(user);
-//
-//        return "A new user was added";
-//    }
+    public String addNewUser(User user) {
+        boolean userExists = userRepository
+                .findUserByUsername(user.getUsername())
+                .isPresent();
+
+        if (userExists) {
+            throw new IllegalStateException("this username is already used");
+        }
+
+        String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+
+        userRepository.save(user);
+
+        return "A new user was added";
+    }
 //
 //    @Transactional
 //    public void updateUser(Integer userId,
 //                           String name,
 //                           String password,
-//                           Role role
+//                           UserRole role
 //                           ) {
 //        User appUser = userRepository.findById(userId)
 //                .orElseThrow(() -> new IllegalStateException(
