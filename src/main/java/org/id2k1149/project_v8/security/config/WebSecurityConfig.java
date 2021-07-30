@@ -1,6 +1,5 @@
 package org.id2k1149.project_v8.security.config;
 
-
 import org.id2k1149.project_v8.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,13 +29,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
 
                 .authorizeRequests()
-                  .antMatchers("api/v*/registration/**")
+                  .antMatchers("/api/v*/registration/**")
                   .permitAll()
 
-//                .anyRequest()
-//                    .authenticated()
-//                    .and()
-//                    .formLogin()
+                .anyRequest()
+                    .authenticated()
+                    .and()
+                    .formLogin()
         ;
 
     }
