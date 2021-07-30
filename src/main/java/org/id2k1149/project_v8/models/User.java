@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 @Entity
 @Table
@@ -24,17 +25,19 @@ public class User implements UserDetails {
             strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
     )
-    private Integer id;
+    private Integer userId;
 
-    @Column(name = "email", nullable = false, unique = true)
-    @Email
-    @NotBlank
-    @Size(max = 32)
+    private String username;
+
+//    @Column(name = "email", nullable = false, unique = true)
+//    @Email
+//    @NotBlank
+//    @Size(max = 32)
     private String email;
 
-    @Column(name = "password", nullable = false)
-    @NotBlank
-    @Size(min = 5, max = 32)
+//    @Column(name = "password", nullable = false)
+//    @NotBlank
+//    @Size(min = 5, max = 100)
     private String password;
 
     @Enumerated(EnumType.STRING)
@@ -43,9 +46,42 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String email, String password, Role role) {
+    public User(String username, String email, String password, Role role) {
+        this.username = username;
         this.email = email;
         this.password = password;
+        this.role = role;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
         this.role = role;
     }
 
@@ -62,7 +98,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return username;
     }
 
     @Override
