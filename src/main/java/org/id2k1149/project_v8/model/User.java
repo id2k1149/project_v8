@@ -1,4 +1,4 @@
-package org.id2k1149.project_v8.models;
+package org.id2k1149.project_v8.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
