@@ -28,15 +28,15 @@ public class User implements UserDetails {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private UserRole userRole;
+    private Role role;
 
     public User() {
     }
 
-    public User(String username, String password, UserRole userRole) {
+    public User(String username, String password, Role role) {
         this.username = username;
         this.password = password;
-        this.userRole = userRole;
+        this.role = role;
     }
 
     public Integer getId() {
@@ -55,17 +55,17 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public UserRole getUserRole() {
-        return userRole;
+    public Role getRole() {
+        return role;
     }
 
-    public void setUserRole(UserRole userRole) {
-        this.userRole = userRole;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole.name());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
         return Collections.singletonList(authority);
     }
 
@@ -105,7 +105,7 @@ public class User implements UserDetails {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", userRole=" + userRole +
+                ", role=" + role +
                 '}';
     }
 }

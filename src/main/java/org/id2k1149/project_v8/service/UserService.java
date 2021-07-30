@@ -71,7 +71,7 @@ public class UserService implements UserDetailsService {
 //    public void updateUser(Integer userId,
 //                           String name,
 //                           String password,
-//                           UserRole role
+//                           Role role
 //                           ) {
 //        User appUser = userRepository.findById(userId)
 //                .orElseThrow(() -> new IllegalStateException(

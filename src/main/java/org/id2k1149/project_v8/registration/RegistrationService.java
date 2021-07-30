@@ -1,7 +1,7 @@
 package org.id2k1149.project_v8.registration;
 
+import org.id2k1149.project_v8.models.Role;
 import org.id2k1149.project_v8.models.User;
-import org.id2k1149.project_v8.models.UserRole;
 import org.id2k1149.project_v8.service.UserService;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +15,12 @@ public class RegistrationService {
     }
 
     public String register(RegistrationRequest request) {
-        return userService.addNewUser(new User(
+        return userService.addNewUser(
+                new User(
                 request.getUsername(),
                 request.getPassword(),
-                UserRole.USER
-        ));
+                Role.USER
+                )
+        );
     }
 }
