@@ -1,7 +1,7 @@
 package org.id2k1149.project_v8.registration;
 
-import org.id2k1149.project_v8.models.Role;
-import org.id2k1149.project_v8.models.User;
+import org.id2k1149.project_v8.model.Role;
+import org.id2k1149.project_v8.model.User;
 import org.id2k1149.project_v8.service.UserService;
 import org.springframework.stereotype.Service;
 

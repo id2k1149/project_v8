@@ -1,4 +1,4 @@
-package org.id2k1149.project_v8.security.config;
+package org.id2k1149.project_v8.security;
 
 import org.id2k1149.project_v8.service.UserService;
 import org.springframework.context.annotation.Bean;
