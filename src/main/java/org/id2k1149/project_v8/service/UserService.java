@@ -46,21 +46,21 @@ public class UserService implements UserDetailsService {
                         "appUser with id " + userId + " does not exist"));
     }
 
-    public String addNewUser(User user) {
+    public User addNewUser(User newUser) {
         boolean userExists = userRepository
-                .findUserByUsername(user.getUsername())
+                .findUserByUsername(newUser.getUsername())
                 .isPresent();
 
         if (userExists) {
             throw new IllegalStateException("this username is already used");
         }
 
-        String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
+        String encodedPassword = bCryptPasswordEncoder.encode(newUser.getPassword());
+        newUser.setPassword(encodedPassword);
 
-        userRepository.save(user);
+        userRepository.save(newUser);
 
-        return "A new user was added";
+        return newUser;
     }
 
     @Transactional

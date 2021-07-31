@@ -31,17 +31,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .authorizeRequests()
                 .antMatchers("/",
                 "index",
+                "/registration",
+                "/api/v1/users/*",
+                "/api/v*/registration/**",
                 "/css/*",
-                "/js/*",
-                "/api/v*/registration/**")
+                "/js/*")
                 .permitAll()
-        .anyRequest()
-        .authenticated()
-        .and()
-        .formLogin()
-        .loginPage("/login")
-                .permitAll()
-        .defaultSuccessUrl("/polls", true)
+//        .anyRequest()
+//        .authenticated()
+//        .and()
+//        .formLogin()
+//        .loginPage("/login")
+//                .permitAll()
+//        .defaultSuccessUrl("/polls", true)
 
 //                .authorizeRequests()
 //                  .antMatchers("/api/v*/registration/**")

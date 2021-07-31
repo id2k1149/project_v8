@@ -1,5 +1,6 @@
 package org.id2k1149.project_v8.registration;
 
+import org.id2k1149.project_v8.model.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,7 +14,7 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public String register(@RequestBody RegistrationRequest request) {
+    public User register(@RequestBody RegistrationRequest request) {
         return registrationService.register(request);
     }
 
