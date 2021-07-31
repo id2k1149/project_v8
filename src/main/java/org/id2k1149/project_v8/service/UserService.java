@@ -11,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import java.util.List;
 import java.util.Objects;
 
@@ -67,8 +66,7 @@ public class UserService implements UserDetailsService {
     public void updateUser(Integer userId,
                            String username,
                            String password,
-                           Role role
-                           ) {
+                           Role role) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalStateException(
                         "user with id " + userId + " does not exist"));
@@ -78,10 +76,14 @@ public class UserService implements UserDetailsService {
         }
 
         if (password != null && password.length() > 0 && !Objects.equals(user.getPassword(), password)) {
-            user.setPassword(password);
+            String encodedPassword = bCryptPasswordEncoder.encode(password);
+            user.setPassword(encodedPassword);
         }
 
-        user.setRole(role);
+        if (role != null) {
+            user.setRole(role);
+        }
+
     }
 
     public void deleteUser(Integer userId) {

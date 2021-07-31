@@ -33,7 +33,9 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String username, String password, Role role) {
+    public User(String username,
+                String password,
+                Role role) {
         this.username = username;
         this.password = password;
         this.role = role;
@@ -55,18 +57,20 @@ public class User implements UserDetails {
         this.password = password;
     }
 
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public Role getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
         return Collections.singletonList(authority);
+
     }
 
     @Override
@@ -99,13 +103,5 @@ public class User implements UserDetails {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role=" + role +
-                '}';
-    }
 }
+

@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import static org.id2k1149.project_v8.security.UserRole.ADMIN;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -35,6 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/js/*",
                 "/api/v*/registration/**")
                 .permitAll()
+//                .antMatchers("/api/v1/users/**").hasRole(ADMIN.name())
         .anyRequest()
         .authenticated()
         .and()

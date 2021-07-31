@@ -1,7 +1,7 @@
 package org.id2k1149.project_v8.restController;
 
-import org.id2k1149.project_v8.model.User;
 import org.id2k1149.project_v8.model.Role;
+import org.id2k1149.project_v8.model.User;
 import org.id2k1149.project_v8.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +30,8 @@ public class UserController {
     }
 
     @PostMapping
-    public void registerNewUser(@RequestBody User appUser) {
-        userService.addNewUser(appUser);
+    public void registerNewUser(@RequestBody User user) {
+        userService.addNewUser(user);
     }
 
     @PutMapping(path = "{userId}")
