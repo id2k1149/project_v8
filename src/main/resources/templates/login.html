@@ -29,13 +29,18 @@
             <label for="password" class="sr-only">Password</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
         </p>
-        <p>
-            Remember me
-            <label for="remember-me" class="sr-only">Remember me</label>
-            <input type="checkbox" id="remember-me" name="remember-me" class="form-control">
-        </p>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
+    <br>
+    <div class="text-center mt-5">
+        <a  href="/signup" >Or create an account</a>
+    </div>
+
 </div>
 </body>
 </html>
