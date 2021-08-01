@@ -40,41 +40,29 @@ public class TemplateController {
         return "signup";
     }
 
-//    @PostMapping()
-//    public String registration(@ModelAttribute("newUser") @Valid User newUser,
-//                               BindingResult bindingResult) {
-//
-//        if (bindingResult.hasErrors()) {
-//            return "registration";
-//        }
-//
-//        userService.addNewUser(
-//                new User(
-//                        newUser.getUsername(),
-//                        newUser.getPassword(),
-//                        Role.USER
-//                )
-//        );
-//        return "redirect:/login";
-//    }
+    @PostMapping("/signup")
+    public String userRegistration(final @Valid  User userData, final BindingResult bindingResult, final Model model){
+        if(bindingResult.hasErrors()){
+            model.addAttribute("registrationForm", userData);
+            return "signup";
+        }
 
-//    @PostMapping(
-//            consumes = MediaType.APPLICATION_JSON_VALUE,
-//            produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<User> create(@RequestBody User newUser) {
-//        User user = userService.addNewUser(newUser);
-//
-//        if (user == null) {
-//           throw new IllegalStateException();
-//        }
-//        return new ResponseEntity<>(user, HttpStatus.CREATED);
-//
-//    }
+            userService.addNewUser(
+                    new User(
+                            userData.getUsername(),
+                            userData.getPassword(),
+                            Role.USER
+                    )
+            );
 
-//    @PostMapping("/registration")
-//    @ResponseStatus(value = HttpStatus.CREATED)
-//    public User createUser(@Valid @RequestBody User newUser) {
-//        return userRepository.save(newUser);
-//    }
+        return "login";
+    }
+
+
+    @GetMapping("/polls")
+    public String getPolls() {
+        return "polls";
+    }
+
 }
 
