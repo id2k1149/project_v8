@@ -14,7 +14,7 @@ public class RegistrationService {
         this.userService = userService;
     }
 
-    public String register(RegistrationRequest request) {
+    public User register(RegistrationRequest request) {
         return userService.addNewUser(
                 new User(
                 request.getUsername(),
