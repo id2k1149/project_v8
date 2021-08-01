@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
+@Transactional
 public class UserService implements UserDetailsService {
 
     private final static String NOT_FOUND = "user with name %s is not found";
@@ -46,7 +47,7 @@ public class UserService implements UserDetailsService {
                         "appUser with id " + userId + " does not exist"));
     }
 
-    public String addNewUser(User user) {
+    public User addNewUser(User user) {
         boolean userExists = userRepository
                 .findUserByUsername(user.getUsername())
                 .isPresent();
@@ -60,7 +61,7 @@ public class UserService implements UserDetailsService {
 
         userRepository.save(user);
 
-        return "A new user was added";
+        return user;
     }
 
     @Transactional

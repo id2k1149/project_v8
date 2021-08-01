@@ -36,21 +36,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
 
         .authorizeRequests()
-                .antMatchers("/",
-                "index",
-                "/css/*",
-                "/js/*"
-                )
-                .permitAll()
+                .antMatchers("/", "index").permitAll()
+                .antMatchers("/css/*", "/js/*").permitAll()
                 .antMatchers("/signup").permitAll()
+                .antMatchers("/registration").permitAll()
                 .antMatchers("/api/v*/registration/**").permitAll()
 
         .anyRequest()
         .authenticated()
         .and()
-        .formLogin()
-
-        .loginPage("/login").permitAll()
+            .formLogin()
+            .loginPage("/login").permitAll()
             .defaultSuccessUrl("/polls", true)
             .passwordParameter("password")
             .usernameParameter("username")
